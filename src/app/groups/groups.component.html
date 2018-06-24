@@ -1,17 +1,19 @@
-<ul *ngIf="groups.length">
-  <li *ngFor="let group of groups">
-      <h4>{{group.name}}</h4>
-      <a [routerLink]="'/groups/' + group._id">Edit a group</a>
-  </li>
-</ul>
-
-<button *ngIf="!showUserForm" (click)="toggleGroupForm(true)">Create group</button>
-
-<form *ngIf="showGroupForm" [formGroup]="groupForm" (submit)="createGroup()">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name" required>
+<div class="d-flex">
+  <div *ngFor="let group of groups" class="card mr-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{group.name}}</h5>
+      <a [routerLink]="'/groups/' + group._id" class="btn btn-primary">Edit a group</a>
+    </div>
   </div>
-  <button type="submit">Create</button>
-  <button (click)="toggleGroupForm(false)">Cancel</button>
+</div>
+
+<button class="mt-2 btn btn-secondary" *ngIf="!showUserForm" (click)="toggleGroupForm(true)">Create group</button>
+
+<form class="mt-2" *ngIf="showGroupForm" [formGroup]="groupForm" (submit)="createGroup()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
+  <button (click)="toggleGroupForm(false)" class="btn btn-secondary">Cancel</button>
 </form>

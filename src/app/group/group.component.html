@@ -1,35 +1,33 @@
 <div *ngIf="group">
   <h2>{{group.name}}</h2>
-  <ul>
-    <li *ngFor="let user of group.users">
-      <h4>{{user.name}}</h4>
-      <ul>
-        <li>Age: {{user.age}}</li>
-        <li>Phone: {{user.phone}}</li>
-        <li>Email: {{user.email}}</li>
-      </ul>
-    </li>
-  </ul>
+  <div *ngFor="let user of group.users" class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{user.name}}</h5>
+      <p>Age: {{user.age}}</p>
+      <p>Phone: {{user.phone}}</p>
+      <p>Email: {{user.email}}</p>
+    </div>
+  </div>
 </div>
-<button *ngIf="!showUserForm" (click)="toggleUserForm(true)">Add member</button>
+<button class="mt-2 btn btn-secondary" *ngIf="!showUserForm" (click)="toggleUserForm(true)">Add member</button>
 
 <form *ngIf="showUserForm" [formGroup]="userForm" (submit)="addUser()">
-  <div>
+  <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name" required>
+    <input type="text" id="name" class="form-control" formControlName="name" required>
   </div>
-  <div>
+  <div class="form-group">
     <label for="age">Age</label>
-    <input type="number" id="age" formControlName="age">
+    <input type="number" id="age" class="form-control" formControlName="age">
   </div>
-  <div>
+  <div class="form-group">
     <label for="phone">Phone</label>
-    <input type="tel" id="phone" formControlName="phone">
+    <input type="tel" id="phone" class="form-control" formControlName="phone">
   </div>
-  <div>
+  <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email">
+    <input type="email" id="email" class="form-control" formControlName="email">
   </div>
-  <button type="submit">Add</button>
-  <button (click)="toggleUserForm(false)">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+  <button (click)="toggleUserForm(false)" class="btn btn-secondary">Cancel</button>
 </form>

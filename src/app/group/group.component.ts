@@ -7,7 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'testApp-group',
   templateUrl: './group.component.html',
-  styleUrls: ['./group.component.css']
+  styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
   group;
