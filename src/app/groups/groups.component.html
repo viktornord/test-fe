@@ -1,0 +1,17 @@
+<ul *ngIf="groups.length">
+  <li *ngFor="let group of groups">
+      <h4>{{group.name}}</h4>
+      <a [routerLink]="'/groups/' + group._id">Edit a group</a>
+  </li>
+</ul>
+
+<button *ngIf="!showUserForm" (click)="toggleGroupForm(true)">Create group</button>
+
+<form *ngIf="showGroupForm" [formGroup]="groupForm" (submit)="createGroup()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" required>
+  </div>
+  <button type="submit">Create</button>
+  <button (click)="toggleGroupForm(false)">Cancel</button>
+</form>
